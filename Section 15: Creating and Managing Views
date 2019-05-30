@@ -1,0 +1,4 @@
+	CREATE OR REPLACE VIEW TITLE_UNAVAIL
+AS SELECT mov.title, med.media_id
+FROM movies mov INNER JOIN media med ON mov.title_id = med.title_id
+WITH READ ONLY;
