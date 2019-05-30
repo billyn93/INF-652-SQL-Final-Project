@@ -1,1 +1,73 @@
+Customers Table Constraints
+2.	CREATE TABLE customers
+(customer_id NUMBER(10) CONSTRAINT customers_customer_id_pk PRIMARY KEY CONSTRAINT customers_customer_id_nn NOT NULL,
+last_name VARCHAR2(25) CONSTRAINT customers_last_name_nn NOT NULL,
+first_name VARCHAR2(25) CONSTRAINT customers_first_name_nn NOT NULL,
+home_phone VARCHAR2(12) CONSTRAINT customers_home_phone_nn NOT NULL,
+address VARCHAR2(100) CONSTRAINT customers_address_nn NOT NULL,
+city VARCHAR2(30) CONSTRAINT customers_city_nn NOT NULL,
+state VARCHAR2(2) CONSTRAINT customers_state_nn NOT NULL,
+email VARCHAR2(25),
+cell_phone VARCHAR2(12));
+
+Checking the Constraints for customers Table
+	SELECT constraint_name, table_name, constraint_type, status
+FROM USER_CONSTRAINTS
+WHERE table_name='CUSTOMERS';
+
+Movies Table Constraints
+CREATE TABLE movies
+(title_id NUMBER(10) CONSTRAINT movies_title_id_pk PRIMARY KEY CONSTRAINT movies_title_id_nn NOT NULL,
+ title VARCHAR2(60) CONSTRAINT movies_title_nn NOT NULL,
+ description VARCHAR2(400) CONSTRAINT movies_description_nn NOT NULL,
+ rating VARCHAR2(4) CONSTRAINT movies_rating_ck CHECK (rating IN ('G','PG','PG13','R')),
+ category VARCHAR2(20) CONSTRAINT movies_category_ck CHECK (category IN ('DRAMA','COMEDY','ACTION','CHILD','SCIFI','DOCUMENTARY')),
+ release_date DATE CONSTRAINT movies_release_date_nn NOT NULL);
+Media Table Constraints
+CREATE TABLE media
+(media_id NUMBER(10) CONSTRAINT media_media_id_pk PRIMARY KEY CONSTRAINT media_media_id_nn NOT NULL,
+format VARCHAR2(3) CONSTRAINT media_format_nn NOT NULL,
+title_id NUMBER(10) CONSTRAINT media_title_id_fk REFERENCES movies (title_id) ON DELETE CASCADE CONSTRAINT media_title_id_nn NOT NULL);
+Checking Media Table Constraints
+SELECT constraint_name, table_name, constraint_type, status
+FROM USER_CONSTRAINTS
+WHERE table_name='MEDIA';
+
+Rental History Table Constraints
+CREATE TABLE rental_history
+(media_id NUMBER(10) CONSTRAINT rental_history_media_id_fk REFERENCES media (media_id) ON DELETE CASCADE CONSTRAINT rental_history_media_id_nn NOT NULL,
+rental_date DATE DEFAULT SYSDATE CONSTRAINT rental_history_rental_date_nn NOT NULL,
+customer_id NUMBER(10) CONSTRAINT rental_history_customer_id_fk REFERENCES customers (customer_id) ON DELETE CASCADE CONSTRAINT rental_history_customer_id_nn NOT NULL,
+return_date DATE,
+CONSTRAINT rental_history_id_date_pk PRIMARY KEY (media_id, rental_date));
+
+
+ACTORS Table Constraints
+
+CREATE TABLE actors
+(actor_id NUMBER(10) CONSTRAINT actors_actor_id_pk PRIMARY KEY CONSTRAINT actors_actor_id_nn NOT NULL,
+stage_name VARCHAR2(40) CONSTRAINT actors_stage_name_nn NOT NULL,
+first_name VARCHAR2(25) CONSTRAINT actors_first_name_nn NOT NULL,
+last_name VARCHAR2(25) CONSTRAINT actors_last_name_nn NOT NULL,
+birth_date DATE CONSTRAINT actors_birth_date_nn NOT NULL);
+
+
+SELECT constraint_name, table_name, constraint_type, status
+FROM USER_CONSTRAINTS
+WHERE table_name='ACTORS';
+
+
+Star Billings Constraints
+CREATE TABLE star_billings
+(actor_id NUMBER(10) CONSTRAINT star_billings_actor_id_nn NOT NULL,
+title_id NUMBER(10) CONSTRAINT star_billings_title_id_nn NOT NULL,
+comments VARCHAR2(40),
+CONSTRAINT star_actor_title_id_pk PRIMARY KEY (actor_id, title_id));
+
+SELECT constraint_name, table_name, constraint_type, status
+FROM USER_CONSTRAINTS
+WHERE table_name='STAR_BILLINGS';
+
+
+
 
