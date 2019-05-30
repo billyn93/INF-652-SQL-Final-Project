@@ -1,0 +1,234 @@
+	Sequence to generate PKs for CUSTOMER_ID in CUSTOMERS table
+CREATE SEQUENCE customer_id_seq
+   INCREMENT BY 1
+   START WITH 101
+   NOMAXVALUE
+   NOMINVALUE
+   NOCYCLE
+   NOCACHE;
+
+
+Sequence to generate PKs for TITLE_ID in MOVIES table
+
+CREATE SEQUENCE title_id_seq
+   INCREMENT BY 1
+   START WITH 1
+   NOMAXVALUE
+   NOMINVALUE
+   NOCYCLE
+   NOCACHE;
+
+Sequence to generate PKs for MEDIA_ID in MEDIA table
+
+CREATE SEQUENCE media_id_seq
+   INCREMENT BY 1
+   START WITH 92
+   NOMAXVALUE
+   NOMINVALUE
+   NOCYCLE
+   NOCACHE;
+   
+   Use a sequence to generate PKs for ACTOR_ID in ACTOR table
+
+CREATE SEQUENCE actor_id_seq
+   INCREMENT BY 1
+   START WITH 1001
+   NOMAXVALUE
+   NOMINVALUE
+   NOCACHE
+   NOCYCLE;
+   
+
+                                  Adding Data to the Tables
+5.	CUSTOMERS TABLE
+INSERT INTO customers
+   (customer_id, last_name, first_name, home_phone, address, city, state, email, cell_phone)
+VALUES (customer_id_seq.NEXTVAL, 'Bob', 'Billy', '785-905-5555', '1505 Wayward Way', 'Kalamazoo', 'MI', 'billyjoebob@hotmail.com', '785-555-0000');
+
+INSERT INTO customers
+   (customer_id, last_name, first_name, home_phone, address, city, state, email, cell_phone)
+VALUES (customer_id_seq.NEXTVAL, 'Joe', 'Rand', '785-905-5511', '1505 Hill Billy Road', 'Salina', 'KS', 'joebob@hotmail.com', '785-555-1111');
+
+INSERT INTO customers
+   (customer_id, last_name, first_name, home_phone, address, city, state, email, cell_phone)
+VALUES (customer_id_seq.NEXTVAL, 'Tyler', 'Gray', '785-905-9999', '111 Wilson Road', 'Salina', 'KS', 'tylergray@hotmail.com', '785-555-4444');
+
+INSERT INTO customers
+   (customer_id, last_name, first_name, home_phone, address, city, state, email, cell_phone)
+VALUES (customer_id_seq.NEXTVAL, 'Owen', 'Wilson', '785-905-9432', '101 Marcus Road', 'Hays', 'KS', 'owenwilson@hotmail.com', '785-555-4214');
+
+INSERT INTO customers
+   (customer_id, last_name, first_name, home_phone, address, city, state, email, cell_phone)
+VALUES (customer_id_seq.NEXTVAL, 'Terry', 'McShaw', '785-902-2222', '101 Web Road', 'Wichita', 'KS', 'terrymcshaw@hotmail.com', '785-555-2222');
+
+INSERT INTO customers
+   (customer_id, last_name, first_name, home_phone, address, city, state, email, cell_phone)
+VALUES (customer_id_seq.NEXTVAL, 'Tim', 'Connor', '316-785-1324', '101 Greg Road', 'Wichita', 'KS', 'timconnor@hotmail.com', '316-222-2222');
+
+SELECT *
+FROM customers;
+
+
+MOVIES table
+INSERT INTO movies
+   (title_id, title, description, rating, category, release_date)
+VALUES (title_id_seq.NEXTVAL, 'The Dark Knight', 'When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham. The Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice', 'PG13', 'ACTION', '18-JUL-2008');
+
+INSERT INTO movies
+   (title_id, title, description, rating, category, release_date)
+VALUES (title_id_seq.NEXTVAL, 'The Dark Knight Rises', 'Eight years after the Joker’s reign of anarchy, Batman, with the help of the enigmatic Catwoman, is forced from his exile to save Gotham City, now on the edge of total annihilation, from the brutal guerrilla terrorist Bane' , 'PG13', 'ACTION', '20-JUL-2012');
+
+INSERT INTO movies
+   (title_id, title, description, rating, category, release_date)
+VALUES (title_id_seq.NEXTVAL, 'Black Panther', 'T’Challa, heir to the hidden but advanced kingdom of Wakanda, must step forward to lead his people into a new future and must confront a challenger from his country’s past' , 'PG13', 'ACTION', '16-FEB-2018');
+
+INSERT INTO movies
+   (title_id, title, description, rating, category, release_date)
+VALUES (title_id_seq.NEXTVAL, 'Wreck-It Ralph', 'A video game villain wants to be a hero and sets out to fulfill his dream, but his quest brings havoc to the whole arcade where he lives' , 'PG', 'CHILD', '02-NOV-2012');
+
+INSERT INTO movies
+   (title_id, title, description, rating, category, release_date)
+VALUES (title_id_seq.NEXTVAL, 'Wreck-It Ralph', 'Six years after the events of “Wreck-It Ralph,” Ralph and Vanellope, now friends, discover a wi-fi router in their arcade, leading them into a new adventure' , 'PG', 'CHILD', '21-NOV-2018');
+
+INSERT INTO movies
+   (title_id, title, description, rating, category, release_date)
+VALUES (title_id_seq.NEXTVAL, 'Rise of the Planet of the Apes', 'A substance designed to help the brain repair itself gives advanced intelligence to a chimpanzee who leads an ape uprising' , 'PG13', 'SCIFI', '05-AUG-2011');
+
+Media Table
+INSERT INTO media
+   (media_id, format, title_id)
+VALUES (media_id_seq.NEXTVAL, 'DVD', 1);
+
+INSERT INTO media
+   (media_id, format, title_id)
+VALUES (media_id_seq.NEXTVAL, 'VHS', 1);
+
+INSERT INTO media
+   (media_id, format, title_id)
+VALUES (media_id_seq.NEXTVAL, 'DVD', 2);
+
+INSERT INTO media
+   (media_id, format, title_id)
+VALUES (media_id_seq.NEXTVAL, 'VHS', 2);
+
+INSERT INTO media
+   (media_id, format, title_id)
+VALUES (media_id_seq.NEXTVAL, 'DVD', 3);
+
+INSERT INTO media
+ 	  (media_id, format, title_id)
+VALUES (media_id_seq.NEXTVAL, 'VHS', 3);
+INSERT INTO media
+   (media_id, format, title_id)
+VALUES (media_id_seq.NEXTVAL, 'DVD', 4);
+
+	INSERT INTO media
+   (media_id, format, title_id)
+VALUES (media_id_seq.NEXTVAL, 'VHS', 4);
+
+INSERT INTO media
+   (media_id, format, title_id)
+VALUES (media_id_seq.NEXTVAL, 'DVD', 5);
+
+INSERT INTO media
+   (media_id, format, title_id)
+VALUES (media_id_seq.NEXTVAL, 'VHS', 5);
+
+INSERT INTO media
+   (media_id, format, title_id)
+VALUES (media_id_seq.NEXTVAL, 'DVD', 6);
+
+INSERT INTO media
+   (media_id, format, title_id)
+VALUES (media_id_seq.NEXTVAL, 'VHS', 6);
+
+SELECT *
+FROM media;
+
+Rental History Table
+
+INSERT INTO rental_history
+   (media_id, rental_date, customer_id, return_date)
+VALUES (92, '22-APR-2019', 101, '29-APR-2019');
+
+INSERT INTO rental_history
+   (media_id, rental_date, customer_id, return_date)
+VALUES (93, '23-APR-2019', 102, '30-APR-2019');
+
+INSERT INTO rental_history
+   (media_id, rental_date, customer_id, return_date)
+VALUES (94, '24-APR-2019', 103, '01-MAY-2019');
+
+INSERT INTO rental_history
+   (media_id, rental_date, customer_id, return_date)
+VALUES (95, '25-APR-2019', 104, '02-MAY-2019');
+
+SELECT *
+FROM rental_history;
+
+
+Actors Table
+INSERT INTO actors
+   (actor_id, stage_name, first_name, last_name, birth_date)
+VALUES (actor_id_seq.NEXTVAL, 'Bill Murray', 'William', 'Murray', '21-SEP-1950' );
+
+INSERT INTO actors
+   (actor_id, stage_name, first_name, last_name, birth_date)
+VALUES (actor_id_seq.NEXTVAL, 'Fred Astaire', 'Frederick', 'Austerlitz', '10-MAY-1899' );
+INSERT INTO actors
+   (actor_id, stage_name, first_name, last_name, birth_date)
+VALUES (actor_id_seq.NEXTVAL, 'Arnold Schwarzenegger', 'Arnold', 'Schwarzenegger', '30-JUL-1947' );
+
+INSERT INTO actors
+   (actor_id, stage_name, first_name, last_name, birth_date)
+VALUES (actor_id_seq.NEXTVAL, 'Frank Sinatra', 'Francis', 'Sinatra', '12-DEC-1915' );
+
+SELECT *
+FROM actors;
+
+Star_Billings Table
+INSERT INTO star_billings
+   (actor_id, title_id, comments)
+VALUES ('1001', '1', 'Not actually in this movie');
+
+INSERT INTO star_billings
+   (actor_id, title_id, comments)
+VALUES ('1002', '2', 'Dummy data');
+
+INSERT INTO star_billings
+   (actor_id, title_id, comments)
+VALUES ('1003', '3', 'You got it');
+
+INSERT INTO star_billings
+   (actor_id, title_id, comments)
+VALUES ('1004', '4', 'Probably not in this movie');
+
+SELECT *
+FROM star_billings;
+
+
+Create an index on the last_name column of the Customers table
+6.	CREATE INDEX customers_last_name_idx
+ON customers(last_name);
+
+SELECT DISTINCT ic.index_name, ic.column_name,
+                ic.column_position, id.uniqueness
+FROM user_indexes id, user_ind_columns ic
+WHERE id.table_name = ic.table_name
+AND ic.table_name = 'CUSTOMERS';
+
+CREATE a synonym called TU for the TITLE_UNAVAIL view
+7.	CREATE SYNONYM TU
+FOR TITLE_UNAVAIL;
+
+SELECT synonym_name, table_name, table_owner
+FROM USER_SYNONYMS;
+
+
+SELECT *
+FROM TU;
+
+
+
+
+
